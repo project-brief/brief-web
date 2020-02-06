@@ -17,15 +17,24 @@
             return;
         }
 
-        $.ajax({
-            url:"url/getShortcut",
-            type:"GET",
-            data : {"original_url" : $("#fullURL").val()},
-            success : function(result){
-                var url_result = JSON.parse(result.shortURL);
-                $("#shortURL").val(url_result.short_url);
-            }
-        })
+        //http, https 입력하게
+        if($("#fullURL").val().indexOf("http://") != -1 || $("#fullURL").val().indexOf("https://") != -1){
+            $.ajax({
+                url:"url/getShortcut",
+                type:"GET",
+                data : {"original_url" : $("#fullURL").val()},
+                success : function(result){
+                    var url_result = JSON.parse(result.shortURL);
+                    $("#shortURL").val(url_result.short_url);
+                },
+                error : function(){
+                    alert("알맞은 http:// 혹은 https:// 넣어주세요");
+                }
+            })
+        }else{
+            alert("알맞은 http:// 혹은 https://를 넣어주세요.");
+            return;
+        }
     }
 
 </script>

@@ -2,6 +2,7 @@ package brief.web.main;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -30,15 +31,19 @@ public class URLController extends BaseController {
     @GetMapping(value = "/getShortcut")
     public ResponseEntity<Map<String, Object>> getShortCutUrl(@RequestParam Map<String, Object> param) {
         Map<String, Object> body = new HashMap<>();
-
         try {
-            body.put("shortURL", urlService.sendFullURL(param));
+            String org = (String)param.get("original_url");
+            if(org.matches("^(http|https)?:\\/\\/.*")){
+                body.put("shortURL", urlService.sendFullURL(param));
+            }else{
+                return new ResponseEntity<Map<String, Object>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         } catch (Exception e) {
             log.error("Exception: {}", ExceptionUtils.getStackTrace(e));
             return new ResponseEntity<Map<String, Object>>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
         return new ResponseEntity<Map<String, Object>>(body, HttpStatus.OK);
+
     }
 
 }

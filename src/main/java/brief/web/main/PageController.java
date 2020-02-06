@@ -1,5 +1,6 @@
 package brief.web.main;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +32,11 @@ public class PageController extends BaseController {
         Map<String, Object> body = new HashMap<>();
 
         try {
-            String fullURL = "redirect:" + urlService.getShortURL(shortURL);
+            String fullURL = URLEncoder.encode(urlService.getShortURL(shortURL), "UTF-8");
+            fullURL = fullURL.replaceAll("%3A", ":");
+            fullURL = fullURL.replaceAll("%2F", "/");
+            fullURL = "redirect:" + fullURL;
+            System.out.println(fullURL);
             if(fullURL.length() < 1 || fullURL.equals("null")){
                 return "/home";
             }

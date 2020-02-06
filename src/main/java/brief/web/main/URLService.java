@@ -89,7 +89,6 @@ public class URLService extends BaseService {
         ObjectMapper mapper = new ObjectMapper();
         Map resultMap = mapper.readValue(response.getBody(), Map.class);
         String result = (String)resultMap.get("original_url");
-
         return result;
     }
 
