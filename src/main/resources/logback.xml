@@ -2,7 +2,7 @@
 <!DOCTYPE xml>
 <configuration debug="true" scan="true" scanPeriod="1 minutes">
 
-  <property name="LOG_FILE_NAME" value="${catalina.home}/logs/spring-mvc-web"/>
+  <property name="LOG_FILE_NAME" value="${catalina.home}/logs/brief-web"/>
 
   <property name="ROOT_LOG_LEVEL" value="DEBUG"/>
 
@@ -20,8 +20,6 @@
   </appender>
 
   <logger name="wcyoung.spring.mvc.mybatis.plugin.MybatisSqlLogInterceptor" level="DEBUG"/>
-
-  <logger name="wcyoung.spring.mvc.mapper.springmvc" level="TRACE"/>
 
   <root level="${ROOT_LOG_LEVEL}">
     <appender-ref ref="FILE"/>

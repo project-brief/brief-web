@@ -1,4 +1,4 @@
-package wcyoung.spring.mvc.bean;
+package brief.bean;
 
 import java.io.IOException;
 import java.time.LocalDateTime;

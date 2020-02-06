@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Implementation-Title: spring-mvc-web
+Implementation-Title: brief-web
 Implementation-Version: 0.0.1.SNAPSHOT
-Implementation-Vendor: wcyoung
+Implementation-Vendor: project-brief

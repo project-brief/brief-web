@@ -12,7 +12,7 @@
   </settings>
 
   <typeAliases>
-    <package name="wcyoung.spring.mvc.web"/>
+    <package name="brief.web"/>
   </typeAliases>
 
   <plugins>

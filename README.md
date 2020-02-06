@@ -1,2 +1,2 @@
-# spring-mvc-web
-Spring MVC Web Template
+# brief-web
+Brief Web

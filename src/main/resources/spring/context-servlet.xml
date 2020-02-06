@@ -11,7 +11,7 @@
       http://www.springframework.org/schema/mvc/spring-mvc.xsd"
       default-autowire="byName">
 
-  <context:component-scan base-package="wcyoung.spring.mvc.web" use-default-filters="false">
+  <context:component-scan base-package="brief.web" use-default-filters="false">
     <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
   </context:component-scan>
 

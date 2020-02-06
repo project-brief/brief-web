@@ -1,4 +1,4 @@
-package wcyoung.spring.mvc.common.aop;
+package brief.common.aop;
 
 import org.apache.commons.lang3.time.StopWatch;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -12,7 +12,7 @@ public class LoggingAspect {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    @Around(value = "execution(* wcyoung.spring.mvc.web..*Service.*(..))")
+    @Around(value = "execution(* brief.web..*Service.*(..))")
     public Object logMethodRunningTime(ProceedingJoinPoint pjp) throws Throwable {
         String className = pjp.getSignature().getDeclaringTypeName();
         String methodName = pjp.getSignature().getName();

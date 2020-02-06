@@ -11,7 +11,7 @@
       http://www.springframework.org/schema/aop/spring-aop.xsd"
       default-autowire="byName">
 
-  <context:component-scan base-package="wcyoung.spring.mvc.web" use-default-filters="false">
+  <context:component-scan base-package="brief.web" use-default-filters="false">
     <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
   </context:component-scan>
 
@@ -19,9 +19,9 @@
     <constructor-arg value="/properties/config.properties"/>
   </bean>
 
-  <bean class="wcyoung.spring.mvc.bean.ApplicationInitializer" lazy-init="false"/>
+  <bean class="brief.bean.ApplicationInitializer" lazy-init="false"/>
 
   <aop:aspectj-autoproxy/>
-  <bean id="loggingAspect" class="wcyoung.spring.mvc.common.aop.LoggingAspect"/>
+  <bean id="loggingAspect" class="brief.common.aop.LoggingAspect"/>
 
 </beans>
