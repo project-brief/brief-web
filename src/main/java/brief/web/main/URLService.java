@@ -11,6 +11,7 @@ import java.util.Properties;
 import javax.annotation.Resource;
 
 import brief.web.api.ApiCallResponseExtractor;
+import brief.web.api.BriefDataVO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.*;
@@ -30,29 +31,9 @@ public class URLService extends BaseService {
     @Resource
     private ResourceLoader resourceLoader;
 
-    public String getManifestVersion() throws IOException {
-        Properties properties = new Properties();
-        properties.load(resourceLoader.getResource("/META-INF/MANIFEST.MF").getInputStream());
-        return properties.getProperty("Implementation-Version");
-    }
-
-    //GET방식의 rest api 호출
-    public String getTest() throws IOException {
-        final String url = "http://localhost:5050/api/v1/version/app";
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders(); // 헤더 설정해줘야 함
-        headers.setContentType(MediaType.APPLICATION_JSON); //media type 은 json
-
-        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
-        HttpEntity<String> resultEx = restTemplate.exchange(url, HttpMethod.GET,entity, String.class); //GET방식
-        String result = resultEx.toString();
-        System.out.println(result);
-        return result;
-    }
-
     //POST방식의 rest api 호출, 첨에 짧은 URL 만들려고 원래 URL 보내기
     public String sendFullURL(Map param) throws Exception {
-        final String url = "http://128.199.112.91:28080/api/v1/url";
+        final String url = BriefDataVO.getInstance().getUrl() + "/api/v1/url";
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
@@ -72,7 +53,7 @@ public class URLService extends BaseService {
 
     //GET방식의 rest api 호출, 단축된 URL의 원본 가져오기
     public String getShortURL(String shortURL) throws Exception {
-        final String url = "http://128.199.112.91:28080/api/v1/url/"+ shortURL;
+        final String url = BriefDataVO.getInstance().getUrl() + "/api/v1/url/"+ shortURL;
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();

@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import javax.annotation.Resource;
 
+import brief.web.api.BriefService;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,9 @@ public class ApplicationInitializer implements InitializingBean, DisposableBean 
     @Resource
     private ResourceLoader resourceLoader;
 
+    @Resource
+    private BriefService briefService;
+
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     private Properties manifestInfo;
@@ -26,7 +30,7 @@ public class ApplicationInitializer implements InitializingBean, DisposableBean 
     @Override
     public void afterPropertiesSet() throws Exception {
         loadManifestInfo();
-
+        loadBriefURL();
         loggingStartup();
     }
 
@@ -45,6 +49,11 @@ public class ApplicationInitializer implements InitializingBean, DisposableBean 
         }
         return true;
     }
+
+    private void loadBriefURL(){
+        briefService.getBriefURL();
+    }
+
 
     private void loggingStartup() {
         String unknown = "Unknown";

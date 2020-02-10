@@ -36,7 +36,7 @@ public class URLController extends BaseController {
             if(org.matches("^(http|https)?:\\/\\/.*")){
                 body.put("shortURL", urlService.sendFullURL(param));
             }else{
-                return new ResponseEntity<Map<String, Object>>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e) {
             log.error("Exception: {}", ExceptionUtils.getStackTrace(e));
