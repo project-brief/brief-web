@@ -13,20 +13,15 @@
 
             // a의 텍스트값을 가져옴
             var text = $("#shortURL").html();
-            console.log(text);
             //숨겨진 input박스 value값으로 text 변수 넣어줌.
             $('#clip_target').val(text);
             // input박스 value를 선택
             $('#clip_target').select();
             var successful = document.execCommand('copy');
             if (successful) {
-
                 alert('url 주소가 복사되었습니다.');
-
             } else {
-
                 alert('url 주소가 복사되지 않았습니다.');
-
             }
         })
     });

@@ -66,6 +66,8 @@ dependencies {
     implementation files('lib/spring-mvc-common-0.0.1.SNAPSHOT.jar')
 
     testImplementation group: "org.junit.jupiter", name: "junit-jupiter-api", version: "${libVer.junit}"
+
+    compile group: "org.apache.httpcomponents", name: "httpclient", version: "4.5.6"
 }
 
 war {
